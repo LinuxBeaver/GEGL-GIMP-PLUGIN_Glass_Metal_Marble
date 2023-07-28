@@ -1,3 +1,5 @@
+If you found this plugin in the top twenty something plugins download. Go to the release section on Github to find the presets file it needs.
+
 # Glass Metallic Marble Text GEGL Gimp Plugin
 GEGL plugin that strongly benefits from built in presets. User will have to follow one special direction to get built in presets.
 ![image](https://github.com/LinuxBeaver/Glass_Metallic_Marble_Text_GEGL_Gimp_Plugin/assets/78667207/dba6fa67-80ea-422d-b016-4d46cd357b06)
