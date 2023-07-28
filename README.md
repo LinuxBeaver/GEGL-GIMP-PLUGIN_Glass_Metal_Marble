@@ -60,6 +60,9 @@ ninja -C build
 
 ## More previews of this based Gimp plugin here
 
+![image](https://github.com/LinuxBeaver/Glass_Metallic_Marble_Text_GEGL_Gimp_Plugin/assets/78667207/9360d991-453f-4847-b0d1-3aabeb963829)
+
+
 ![image](https://github.com/LinuxBeaver/Glass_Metallic_Marble_Text_GEGL_Gimp_Plugin/assets/78667207/80f24b26-69a4-4625-ae41-cba1e44030f5)
 
 ![image](https://github.com/LinuxBeaver/Glass_Metallic_Marble_Text_GEGL_Gimp_Plugin/assets/78667207/503f4a30-c443-4818-9cea-e33d5529cf83)
