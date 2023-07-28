@@ -68,6 +68,7 @@ median-blur radius=0
 " id=1 src-in aux=[ ref=1 gaussian-blur std-dev-x=0.4 std-dev-y=0.4  gaussian-blur std-dev-x=0.4 std-dev-y=0.4  ] "\
 
 
+
 property_enum(guichange, _("Part of filter to be displayed"),
     guiendgmmlist, guichangeenumgmmlist,
     GMM_SHOW_DEFAULT)
@@ -241,12 +242,13 @@ ui_meta ("visible", "guichange {advancegmm}")
 static void attach (GeglOperation *operation)
 {
   GeglNode *gegl = operation->node;
-  GeglNode *input, *alienmap, *bloom, *boxblur, *bevel, *cb, *color, *graph1, *graph2, *graph3,  *desat, *replace2, *edge, *hslcolor, *idref, *idref2, *idref3, *idref4, *linearlight, *median, *nr, *replace, *fixgraph,  *saturation, *ta2, *output;
+  GeglNode *input, *alienmap, *white, *bloom, *boxblur, *bevel, *cb, *color, *graph1, *graph2, *graph3,  *desat, *replace2, *edge, *hslcolor, *idref, *idref2, *idref3, *idref4, *linearlight, *median, *nr, *replace, *fixgraph,  *saturation, *ta2, *output;
 
   input    = gegl_node_get_input_proxy (gegl, "input");
   output   = gegl_node_get_output_proxy (gegl, "output");
   GeglColor *embedded_color = gegl_color_new ("#ffcc99");
   GeglColor *embedded_color2 = gegl_color_new ("#ffb957");
+  GeglColor *embedded_color3 = gegl_color_new ("#ffffff");
 
 
 
@@ -299,6 +301,11 @@ replace2 = gegl_node_new_child (gegl,
 
   graph3    = gegl_node_new_child (gegl,
                                   "operation", "gegl:gegl", "string", TUTORIAL3,
+                                  NULL);
+
+  
+white    = gegl_node_new_child (gegl,
+                                  "operation", "gegl:color-overlay", "value", embedded_color3,
                                   NULL);
 
 
@@ -380,7 +387,7 @@ drop shadow is applied in a gegl graph below them.*/
 
 
 
-  gegl_node_link_many (input, median, cb, idref, replace, graph1, idref2, hslcolor, nr, bloom, saturation, idref3, linearlight, idref4, replace2, graph2, graph3, fixgraph, ta2, output, NULL);
+  gegl_node_link_many (input, white, median, cb, idref, replace, graph1, idref2, hslcolor, nr, bloom, saturation, idref3, linearlight, idref4, replace2, graph2, graph3, fixgraph, ta2, output, NULL);
   gegl_node_connect_from (replace, "aux", alienmap, "output");
   gegl_node_link_many (idref, alienmap, NULL);
   gegl_node_connect_from (hslcolor, "aux", boxblur, "output");
