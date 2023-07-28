@@ -58,7 +58,7 @@ Then build the same way you would on Linux:
 meson setup --buildtype=release build
 ninja -C build
 
-## More previews of this based plugin here
+## More previews of this based Gimp plugin here
 
 ![image](https://github.com/LinuxBeaver/Glass_Metallic_Marble_Text_GEGL_Gimp_Plugin/assets/78667207/80f24b26-69a4-4625-ae41-cba1e44030f5)
 
