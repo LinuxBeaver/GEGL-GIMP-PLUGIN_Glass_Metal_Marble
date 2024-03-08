@@ -174,7 +174,7 @@ property_double (depth, _("Depth and or detail of bevel"), 24.0)
     ui_meta ("unit", "degree")
 
 
-property_double (gaus, _("Internal Gaussian Blur (fatness of bevel)"), 3)
+property_double (gaus, _("Internal Gaussian Blur (fatness of bevel)"), 3.0)
    description (_("Gaussian Blur makes a normal fat bevel"))
    value_range (0.0, 9.0)
 
@@ -253,7 +253,7 @@ static void attach (GeglOperation *operation)
 
 
   cb    = gegl_node_new_child (gegl,
-                                  "operation", "gegl:custom-bevel", "blendmode", 3, "opacity", 4.9, "coloroverlay", embedded_color,
+                                  "operation", "lb:custom-bevel", "blendmode", 3, "opacity", 4.9, "coloroverlay", embedded_color,
                                   NULL);
 
   bevel    = gegl_node_new_child (gegl,
@@ -388,13 +388,13 @@ drop shadow is applied in a gegl graph below them.*/
 
 
   gegl_node_link_many (input, white, median, cb, idref, replace, graph1, idref2, hslcolor, nr, bloom, saturation, idref3, linearlight, idref4, replace2, graph2, graph3, fixgraph, ta2, output, NULL);
-  gegl_node_connect_from (replace, "aux", alienmap, "output");
+  gegl_node_connect (replace, "aux", alienmap, "output");
   gegl_node_link_many (idref, alienmap, NULL);
-  gegl_node_connect_from (hslcolor, "aux", boxblur, "output");
+  gegl_node_connect (hslcolor, "aux", boxblur, "output");
   gegl_node_link_many (idref2, color, boxblur, NULL);
-  gegl_node_connect_from (linearlight, "aux", bevel, "output");
+  gegl_node_connect (linearlight, "aux", bevel, "output");
   gegl_node_link_many (idref3, bevel, NULL);
-  gegl_node_connect_from (replace2, "aux", desat, "output");
+  gegl_node_connect (replace2, "aux", desat, "output");
   gegl_node_link_many (idref4, edge, desat,  NULL);
 
 
