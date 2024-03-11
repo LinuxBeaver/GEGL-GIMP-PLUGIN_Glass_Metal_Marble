@@ -65,7 +65,7 @@ median-blur radius=0
 " id=1 gimp:layer-mode layer-mode=grain-merge opacity=0.05 aux=[ ref=1 ] "\
 
 #define TUTORIAL3 \
-" id=1 src-in aux=[ ref=1 gaussian-blur std-dev-x=0.4 std-dev-y=0.4  gaussian-blur std-dev-x=0.4 std-dev-y=0.4  ] "\
+" id=1 src-in aux=[ ref=1 gaussian-blur  abyss-policy=none  clip-extent=false std-dev-x=0.4 std-dev-y=0.4  gaussian-blur  abyss-policy=none  clip-extent=false std-dev-x=0.4 std-dev-y=0.4  ] "\
 
 
 
@@ -274,7 +274,7 @@ static void attach (GeglOperation *operation)
                                   NULL);
 
   median    = gegl_node_new_child (gegl,
-                                  "operation", "gegl:median-blur", "neighborhood", 2,
+                                  "operation", "gegl:median-blur", "neighborhood", 2,  "abyss-policy",     GEGL_ABYSS_NONE,                                        
                                   NULL);
 
 replace = gegl_node_new_child (gegl,
@@ -357,7 +357,7 @@ A median blur at zero radius is confirmed to make no changes to an image.
 This option resets gegl:opacity's value to prevent a known bug where
 plugins like clay, glossy balloon and custom bevel glitch out when
 drop shadow is applied in a gegl graph below them.*/
-   fixgraph      = gegl_node_new_child (gegl, "operation", "gegl:median-blur",
+   fixgraph      = gegl_node_new_child (gegl, "operation", "gegl:median-blur",     "abyss-policy",     GEGL_ABYSS_NONE,
                                          "radius",       0,
                                          NULL);                 
                      
