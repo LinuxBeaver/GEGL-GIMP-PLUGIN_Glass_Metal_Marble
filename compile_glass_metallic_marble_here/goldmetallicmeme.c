@@ -14,15 +14,15 @@
  * License along with GEGL; if not, see <https://www.gnu.org/licenses/>.
  *
  * Copyright 2006 Øyvind Kolås <pippin@gimp.org>
- * 2023 Beaver (GEGL Gold/Metallic Text) 
+ * 2023 Beaver (GEGL Gold/Metallic Text)
  */
 
 /*
-Run this to test filter in GEGL Graph without installing. Requires custom bevel, and bevel. 
+Run this to test filter in GEGL Graph without installing. Requires custom bevel, and bevel.
 
 median-blur radius=10 alpha-percentile=20 neighborhood=diamond
 
-custom-bevel size=4 gaus=4 box=5  opacity=4.9 coloroverlay=#ffcc99 blendmode=Plus azimuth=54 
+custom-bevel size=4 gaus=4 box=5  opacity=4.9 coloroverlay=#ffcc99 blendmode=Plus azimuth=54
 alien-map cpn-1-frequency=5 cpn-2-frequency=3 cpn-2-frequency=13
 gimp:desaturate mode=average
 hue-chroma lightness=-17
@@ -258,11 +258,11 @@ static void attach (GeglOperation *operation)
 
   bevel    = gegl_node_new_child (gegl,
                                   "operation", "lb:bevel",
-                                  NULL);   
+                                  NULL);
 
 
   color    = gegl_node_new_child (gegl,
-                                  "operation", "gegl:color-overlay", "value", embedded_color2, 
+                                  "operation", "gegl:color-overlay", "value", embedded_color2,
                                   NULL);
 
   boxblur    = gegl_node_new_child (gegl,
@@ -274,16 +274,16 @@ static void attach (GeglOperation *operation)
                                   NULL);
 
   median    = gegl_node_new_child (gegl,
-                                  "operation", "gegl:median-blur", "neighborhood", 2,  "abyss-policy",     GEGL_ABYSS_NONE,                                        
+                                  "operation", "gegl:median-blur", "neighborhood", 2,  "abyss-policy",     GEGL_ABYSS_NONE,
                                   NULL);
 
 replace = gegl_node_new_child (gegl,
-                                    "operation", "gimp:layer-mode", "layer-mode", 62, "composite-mode", 0,  "blend-space", 0, NULL);     
+                                    "operation", "gimp:layer-mode", "layer-mode", 62, "composite-mode", 0,  "blend-space", 0, NULL);
 
 replace2 = gegl_node_new_child (gegl,
-                                    "operation", "gimp:layer-mode", "layer-mode", 62, "composite-mode", 0,  "blend-space", 0, NULL);                    
-                                    
-                     
+                                    "operation", "gimp:layer-mode", "layer-mode", 62, "composite-mode", 0,  "blend-space", 0, NULL);
+
+
   desat    = gegl_node_new_child (gegl,
                                   "operation", "gimp:desaturate",
                                   NULL);
@@ -303,14 +303,14 @@ replace2 = gegl_node_new_child (gegl,
                                   "operation", "gegl:gegl", "string", TUTORIAL3,
                                   NULL);
 
-  
+
 white    = gegl_node_new_child (gegl,
                                   "operation", "gegl:color-overlay", "value", embedded_color3,
                                   NULL);
 
 
   ta2    = gegl_node_new_child (gegl,
-                                  "operation", "gegl:nop", "alphadegree", 0.1,
+                                  "operation", "gegl:nop",
                                   NULL);
 
   idref    = gegl_node_new_child (gegl,
@@ -336,33 +336,31 @@ white    = gegl_node_new_child (gegl,
 
   saturation    = gegl_node_new_child (gegl,
                                   "operation", "gegl:saturation",
-                                  NULL);   
+                                  NULL);
 
   nr    = gegl_node_new_child (gegl,
                                   "operation", "gegl:noise-reduction",
-                                  NULL);    
+                                  NULL);
 
   bloom    = gegl_node_new_child (gegl,
                                   "operation", "gegl:bloom", "strength", 22.0,
-                                  NULL);        
+                                  NULL);
 
 linearlight = gegl_node_new_child (gegl,
-                                    "operation", "gimp:layer-mode", "layer-mode", 50, "composite-mode", 0,  "blend-space", 2, "opacity", 0.05, NULL);   
+                                    "operation", "gimp:layer-mode", "layer-mode", 50, "composite-mode", 0,  "blend-space", 2, "opacity", 0.05, NULL);
 
 hslcolor = gegl_node_new_child (gegl,
-                                    "operation", "gimp:layer-mode", "layer-mode", 39, "composite-mode", 0,  "blend-space", 2, "opacity", 0.15, NULL);   
+                                    "operation", "gimp:layer-mode", "layer-mode", 39, "composite-mode", 0,  "blend-space", 2, "opacity", 0.15, NULL);
 
  /*Repair GEGL Graph is a critical operation for Gimp's non-destructive future.
-A median blur at zero radius is confirmed to make no changes to an image. 
+A median blur at zero radius is confirmed to make no changes to an image.
 This option resets gegl:opacity's value to prevent a known bug where
 plugins like clay, glossy balloon and custom bevel glitch out when
 drop shadow is applied in a gegl graph below them.*/
    fixgraph      = gegl_node_new_child (gegl, "operation", "gegl:median-blur",     "abyss-policy",     GEGL_ABYSS_NONE,
                                          "radius",       0,
-                                         NULL);                 
-                     
+                                         NULL);
 
-  gegl_operation_meta_redirect (operation, "value", color, "value");
   gegl_operation_meta_redirect (operation, "gaus", cb, "gaus");
   gegl_operation_meta_redirect (operation, "box", cb, "box");
   gegl_operation_meta_redirect (operation, "azimuth", cb, "azimuth");
@@ -373,7 +371,6 @@ drop shadow is applied in a gegl graph below them.*/
   gegl_operation_meta_redirect (operation, "radius", median, "radius");
   gegl_operation_meta_redirect (operation, "alphapercentile", median, "alpha-percentile");
   gegl_operation_meta_redirect (operation, "saturation", saturation, "scale");
-  gegl_operation_meta_redirect (operation, "bloom", bloom, "strength");
   gegl_operation_meta_redirect (operation, "smooth", nr, "iterations");
   gegl_operation_meta_redirect (operation, "llopacity", linearlight, "opacity");
   gegl_operation_meta_redirect (operation, "amopacity", replace, "opacity");
