@@ -210,6 +210,7 @@ ui_meta ("visible", "guichange {advancegmm}")
 property_double (sobelopacity, _("Opacity of edge sobel"), 0.15)
    description (_("Edge sobel is running at a very low value. This increases or decreases its opacity presence."))
    value_range (0.00, 0.20)
+   value_range (0.00, 1.00)
 ui_meta ("visible", "guichange {advancegmm}")
 
 property_double (topbevelexpand, _("Top blended bevel expansion"), 7.0)
