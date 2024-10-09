@@ -20,8 +20,6 @@ C:\Users\USERNAME\AppData\Roaming\GIMP\2.10\filters
 /home/USERNAME/.var/app/org.gimp.GIMP/config/GIMP/2.10/filters
 
 
-
-
 ## OS specific location to put GEGL Filter binaries 
 
 **Windows**
@@ -38,16 +36,19 @@ C:\Users\USERNAME\AppData\Local\gegl-0.4\plug-ins
 
 
 ## Compiling and Installing
-Linux
+
+For Linux run "build_plugin_linux.sh" for Windows run "build_plugin_windows.sh" for manual compiling read below.
+
+**Linux**
 
 To compile and install you will need the GEGL header files (libgegl-dev on Debian based distributions or gegl on Arch Linux) and meson (meson on most distributions).
 
 meson setup --buildtype=release build
 ninja -C build
 
-
 If you have an older version of gegl you may need to copy to ~/.local/share/gegl-0.3/plug-ins instead (on Ubuntu 18.04 for example).
-Windows
+
+**Windows**
 
 The easiest way to compile this project on Windows is by using msys2. Download and install it from here: https://www.msys2.org/
 
