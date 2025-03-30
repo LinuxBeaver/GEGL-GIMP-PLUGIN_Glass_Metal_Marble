@@ -7,32 +7,32 @@ GEGL plugin that strongly benefits from built in presets. User will have to foll
 
 ## SPECIAL LOCATION TO PUT GimpGegl-lb-gmm-config.settings -THIS IS NOT WHERE THE PLUGIN GOES
 **THIS IS THE PRESET LIST**
-*if you have 2.99 replace 2.10 with 2.99 or 3.0 when Gimp 3 is released.
 
 **Windows Normal**  
-C:\Users\USERNAME\AppData\Roaming\GIMP\2.10\filters
+C:\Users\USERNAME\AppData\Roaming\GIMP\3.0\filters
 
 **Linux Normal**
                         
-/home/USERNAME/.config/GIMP/2.10/filters
+`~/.config/GIMP/3.0/filters`
 
 **Linux Flatpak and Chrome book**         
-/home/USERNAME/.var/app/org.gimp.GIMP/config/GIMP/2.10/filters
+
+`/.var/app/org.gimp.GIMP/config/GIMP/3.0/filters`
 
 
 ## OS specific location to put GEGL Filter binaries 
 
 **Windows**
 
-C:\Users\USERNAME\AppData\Local\gegl-0.4\plug-ins
+`C:\Users\USERNAME\AppData\Local\gegl-0.4\plug-ins`
  
 **Linux**
  
- /home/(USERNAME)/.local/share/gegl-0.4/plug-ins
+ `/.local/share/gegl-0.4/plug-ins`
  
 **Linux (Flatpak)**
  
- /home/(USERNAME)/.var/app/org.gimp.GIMP/data/gegl-0.4/plug-ins
+ `/.var/app/org.gimp.GIMP/data/gegl-0.4/plug-ins`
 
 
 ## Compiling and Installing
