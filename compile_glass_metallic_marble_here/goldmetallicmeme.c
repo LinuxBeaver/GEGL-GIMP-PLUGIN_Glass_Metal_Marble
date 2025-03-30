@@ -87,7 +87,7 @@ property_enum (blendmode, _("Blend Mode of Internal Emboss"),
     GEGL_BLEND_MODE_TYPE_GRAINMERGE3)
 
 
-property_int  (smooth, _("Smooth Metal"), 12)
+property_int  (smooth, _("Smooth Metal"), 3)
   description (_("Smooth the bevel using noise reduction"))
   value_range (0, 14)
   ui_range    (0, 14)
@@ -146,7 +146,7 @@ enum_end (GeglBlendModeTypecbevelgoldmeme)
 
 
 
-property_int  (radius, _("Median's Radius (wideness control)"), 15)
+property_int  (radius, _("Median's Radius (wideness control)"), 6)
   value_range (0, 30)
   ui_range    (0, 30)
   ui_meta     ("unit", "pixel-distance")
@@ -180,8 +180,8 @@ property_double (gaus, _("Internal Gaussian Blur (fatness of bevel)"), 3.0)
 
 
 
-property_int (box, _("Internal Box Blur (makes sharper bevel)"), 6)
-   description(_("Box Blur makes a sharper bevel"))
+property_int (box, _("Internal Box Blur (makes box bevel)"), 1)
+   description(_("Box Blur makes a box bevel"))
    value_range (0, 6)
    ui_range    (0, 6)
    ui_gamma   (1.5)
@@ -409,7 +409,7 @@ gegl_op_class_init (GeglOpClass *klass)
 
   gegl_operation_class_set_keys (operation_class,
     "name",        "lb:gmm",
-    "title",       _("Glass, Metallic, Marble and more Text Styler"),
+    "title",       _("Glass, Metallic, Marble"),
     "reference-hash", "golod6r00350fmejftall124c",
     "description", _("Glass Metallic and Marble text generation - To use this filter optimally please import and save the provided presets and perhaps adjust them with internal gaussian/box, and wideness control to match your text.)"
                      ""),
